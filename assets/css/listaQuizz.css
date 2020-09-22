@@ -1,4 +1,4 @@
-.lista-quizz header{
+.tela-lista-quizz header{
     background: #6D8FB8;
     width: 100%;
     color:#FFF;
@@ -7,13 +7,13 @@
     font-weight: bold;
 }
 
-.lista-quizz main{
+.tela-lista-quizz .lista-quizzes{
     margin: 50px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.lista-quizz .quizz{
+.tela-lista-quizz .quizz{
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
     height: 150px;
     width: 125px;
@@ -21,17 +21,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin: 15px;
 }
 
-.lista-quizz .novo-quizz{
+.tela-lista-quizz .novo-quizz{
     background: #7EA6D4;
     color:white;
     flex-direction: column;
     justify-content: space-evenly;
     font-weight: bold;
     font-size: 20px;
-    text-align: center;
 }
 
 .novo-quizz span{
