@@ -11,13 +11,16 @@ h3{
 }
 .conteudo-quizz,.nivel-quizz,.posiciona-botao{
     width: 100%;
-    margin-top:100px;
+    margin-top:30px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .pergunta-quizz,.caixa-nivel{
     margin-top: 50px;
+}
+.conteudo-quizz >:nth-child(2){
+    margin-top: 10px;
 }
 .posiciona-botao{
     margin-top:20px;
@@ -37,7 +40,7 @@ h3{
 }
 .titulo-quizz{
     width: 600px;
-    margin-bottom:10px;
+    margin: 50px 0px 10px 0px;
     height: 35px;
     border: 1px solid rgba(130, 130, 130, 0.5);
     border-radius: 5px;
@@ -84,6 +87,19 @@ h3{
     height: 100px;
     padding: 5px;
 }
+
+.publicar-pergunta{
+    width: 600px;
+    padding: 5px 0px;
+    background: #6D8FB8;
+    border:none;
+    color:#fff;
+    font-size:18px;
+    border-radius: 5px;
+    margin-bottom:100px;
+}
+
+
 
 
 
