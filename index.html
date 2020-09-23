@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/login-styles.css">
     <link rel="stylesheet" href="assets/css/listaQuizz.css">
+    <link rel="stylesheet" href="assets/css/criacaoQuizz.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
     
-    <section class="tela-login">
+    <section class="tela-login esconde-tela">
         <h1> BuzzQuizz </h1>
         <p> O Quiz que você Quizzer</p>
 
@@ -26,12 +27,57 @@
     </section>
 
     <section class="tela-lista-quizz esconde-tela">
-        <header>
+        <header class="topo-buzzquizz">
             BuzzQuizz
         </header>
             <ul class="lista-quizzes">
-
             </ul>
+    </section>
+
+    <section class="tela-criacao-quizz>">
+        <header class="topo-buzzquizz">
+            BuzzQuizz
+        </header>
+            
+        <div class="conteudo-quizz">
+            <input type="text" class="titulo-quizz" placeholder="Digite o título do seu quizz">
+            <div class = "caixa-perguntas">
+                <h3>Pergunta 1</h3>
+                <input type="text" class="pergunta" placeholder="Digite a pergunta">
+                <div class = "caixa-respostas">
+                    <ul class = "lista-respostas">
+                        <li> <input type="text" class="resposta correta" placeholder="Digite a resposta correta"> </li>
+                        <li> <input type="text" class="resposta" placeholder="Digite a resposta errada 1"> </li>
+                        <li> <input type="text" class="resposta" placeholder="Digite a resposta errada 2"> </li>
+                        <li> <input type="text" class="resposta" placeholder="Digite a resposta errada 3"> </li>
+                    </ul>
+                    <ul class = "lista-respostas-imagem">
+                        <li> <input type="text" class="resposta-imagem correta" placeholder="Link para imagem correta"> </li>
+                        <li> <input type="text" class="resposta-imagem" placeholder="Link para imagem errada 1"> </li>
+                        <li> <input type="text" class="resposta-imagem" placeholder="Link para imagem errada 2"> </li>
+                        <li> <input type="text" class="resposta-imagem" placeholder="Link para imagem errada 3"> </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="adicionar"><ion-icon name='add-circle'></ion-icon></button>
+        </div>
+
+        <div class="nivel-quizz">
+            <div class = "caixa-nivel">
+                <h3>Nível 1</h3>
+                <ul class = "acerto-nivel">
+                    <li> <input type="text" class="input-nivel acerto-minimo" placeholder="% Mínima de Acerto do nível"> </li>
+                    <li> <input type="text" class="input-nivel acerto-maximo" placeholder="% Máxima de Acerto do nível"> </li>
+                </ul>
+                <ul class = "informacoes-nivel">
+                    <li> <input type="text" class="input-nivel titulo-nivel" placeholder="Título do nível"> </li>
+                    <li> <input type="text" class="input-nivel imagem-nivel" placeholder="Link da imagem do nível"> </li>
+                    <li> <textarea type="text" class="input-nivel descricao-nivel" placeholder="Descrição do Nível"></textarea> </li>
+        
+                </ul>
+            </div>
+            <button class="adicionar"><ion-icon name='add-circle'></ion-icon></button>
+        </div>
     </section>
 
 

@@ -1,0 +1,88 @@
+.tela-criacao-quizz{
+    width: 100vw;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+}
+h3{
+    font-size: 20px;
+    margin: 10px 0px;
+}
+.conteudo-quizz,.nivel-quizz{
+    width: 100%;
+    margin-top:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caixa-perguntas,.caixa-nivel{
+    background: #E3F0FF;
+    padding: 5px 10px 10px 10px;
+    border-radius: 10px;
+    width: 600px;
+}
+.caixa-respostas{
+    display:flex;
+    width: 100%;
+}
+.lista-respostas{
+    margin-right: 5px;
+}
+.titulo-quizz{
+    width: 600px;
+    margin-bottom:10px;
+    height: 35px;
+    border: 1px solid rgba(130, 130, 130, 0.5);
+    border-radius: 5px;
+    padding: 0px 5px;
+    font-size: 18px;
+}
+.resposta,.resposta-imagem,.pergunta,.input-nivel{
+    width: 100%;
+    margin: 3px 0px;
+    border:none;
+    border-radius: 3px;
+    height: 30px;
+    padding:0px 5px;
+}
+.lista-respostas,.lista-respostas-imagem{
+    width: 100%;
+}
+.resposta,.resposta-imagem{
+    background: #FFD9D9;
+    width: 100%;
+}
+.correta{
+    background: #DAFFD9;
+}
+
+.adicionar{
+    margin-top:20px;
+    color:#6D8FB8;
+    font-size: 40px;
+    background:none;
+    border: none;
+}
+
+.acerto-nivel{
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.acerto-nivel li{
+    width: calc(50% - 5px);
+}
+
+.descricao-nivel{
+    height: 100px;
+    padding: 5px;
+}
+
+
+
+
+
+
+

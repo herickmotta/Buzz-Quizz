@@ -34,7 +34,7 @@ function carregaListaQuizz(){
 function renderizaListaQuizzes(){
     var ul = document.querySelector('.lista-quizzes');
     ul.innerHTML = "";
-    var novoQuizz = "<article class='quizz novo-quizz'>";
+    var novoQuizz = "<article class='quizz novo-quizz' onclick='carregaCriacaoQuizz()'>";
     novoQuizz += "Novo<br>Quizz<span>";
     novoQuizz +="<ion-icon name='add-circle'></ion-icon></span></article>";
     for(i = -1; i<listaQuizzes.length;i++){
