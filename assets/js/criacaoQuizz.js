@@ -30,7 +30,14 @@ function publicarQuizz(){
 
     var perguntas = buscaPerguntas();
     var niveis = buscaNiveis();
-    console.log(perguntas);
+    
+    var dados{
+        'title': title,
+        'perguntas': perguntas,
+        'niveis': niveis
+
+    }
+
 }
 
 function buscaNiveis(){
@@ -68,6 +75,10 @@ function buscaPerguntas(){
         var respostas = [];
         var tituloInput = listaPerguntas[i].querySelector('.pergunta');
         var titulo = primeiraLetra(tituloInput.value.trim());
+        if(validaInterrogacao(titulo)){
+            alert("Corrija os dados!");
+            return;
+        }
         var respostasInput = listaPerguntas[i].querySelectorAll('.resposta');
         var respostasImgInput = listaPerguntas[i].querySelectorAll('.resposta-imagem');
         for(var j = 0; j < respostasInput.length;j++){
@@ -96,5 +107,12 @@ function limpaFormulario(elemento){
 function primeiraLetra(string){
     string = string[0].toUpperCase() + string.slice(1);
     return string;
+}
+
+function validaInterrogacao(string){
+    index = string.indexOf("?",0);
+    indexFinal = string.lastIndexOf("?");
+    if(index === indexFinal && indexFinal === string.length-1) return false;
+    else return true;
 }
 
