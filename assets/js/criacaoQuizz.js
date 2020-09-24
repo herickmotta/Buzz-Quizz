@@ -8,6 +8,7 @@ function adicionaPergunta(){
     var novaPergunta = pergunta.cloneNode(true);
     var tela = document.querySelector(".conteudo-quizz");
     contPergunta++;
+    limpaFormulario(novaPergunta);
     tela.appendChild(novaPergunta);
     novaPergunta.querySelector("h3").innerText = "Pergunta " + contPergunta;
 }
@@ -17,6 +18,7 @@ function adicionaNivel(){
     var novoNivel = nivel.cloneNode(true);
     var tela = document.querySelector(".nivel-quizz");
     contNivel++;
+    limpaFormulario(novoNivel);
     tela.appendChild(novoNivel);
     novoNivel.querySelector("h3").innerText = "Nível " + contNivel;
 }
@@ -24,10 +26,12 @@ function adicionaNivel(){
 function publicarQuizz(){
     var titleInput = document.querySelector('.conteudo-quizz .titulo-quizz');
     var title = titleInput.value;
+    title = primeiraLetra(title);
+    console.log(title);
+
     var perguntas = buscaPerguntas();
-    console.log(perguntas);
     var niveis = buscaNiveis();
-    console.log(niveis);
+    console.log(perguntas);
 }
 
 function buscaNiveis(){
@@ -64,12 +68,12 @@ function buscaPerguntas(){
     for(var i = 0 ;i < listaPerguntas.length;i++){
         var respostas = [];
         var tituloInput = listaPerguntas[i].querySelector('.pergunta');
-        var titulo = tituloInput.value;
+        var titulo = primeiraLetra(tituloInput.value);
         var respostasInput = listaPerguntas[i].querySelectorAll('.resposta');
         var respostasImgInput = listaPerguntas[i].querySelectorAll('.resposta-imagem');
         for(var j = 0; j < respostasInput.length;j++){
             var resposta = {
-                'texto': respostasInput[j].value,
+                'texto': primeiraLetra(respostasInput[j].value),
                 'imagem': respostasImgInput[j].value
             };
             respostas.push(resposta);
@@ -81,4 +85,16 @@ function buscaPerguntas(){
         perguntas.push(pergunta);
     }
     return perguntas;
+}
+
+function limpaFormulario(elemento){
+    var formulario = elemento.querySelectorAll('input');
+    for(var i = 0;i<formulario.length;i++){
+        formulario[i].value = '';
+    }
+}
+
+function primeiraLetra(string){
+    string = string[0].toUpperCase() + string.slice(1);
+    return string;
 }
