@@ -1,6 +1,5 @@
 .tela-criacao-quizz{
-    width: 100vw;
-    height: 100%;
+    width: 100%;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +9,7 @@ h3{
     margin: 10px 0px;
 }
 .conteudo-quizz,.nivel-quizz,.posiciona-botao{
-    width: 100%;
+    width: 600px;
     margin-top:30px;
     display: flex;
     flex-direction: column;
@@ -18,6 +17,7 @@ h3{
 }
 .pergunta-quizz,.caixa-nivel{
     margin-top: 50px;
+    width: 100%;
 }
 .conteudo-quizz >:nth-child(2){
     margin-top: 10px;
@@ -29,7 +29,7 @@ h3{
     background: #E3F0FF;
     padding: 5px 10px 10px 10px;
     border-radius: 10px;
-    width: 600px;
+    width: 100%;
 }
 .caixa-respostas{
     display:flex;
@@ -39,7 +39,7 @@ h3{
     margin-right: 5px;
 }
 .titulo-quizz{
-    width: 600px;
+    width: 100%;
     margin: 50px 0px 10px 0px;
     height: 35px;
     border: 1px solid rgba(130, 130, 130, 0.5);
@@ -89,7 +89,7 @@ h3{
 }
 
 .publicar-pergunta{
-    width: 600px;
+    width: 100%;
     padding: 5px 0px;
     background: #6D8FB8;
     border:none;
@@ -99,8 +99,19 @@ h3{
     margin-bottom:100px;
 }
 
-.esconde-tela{
-    display: none;
+@media(max-width:600px){
+    .conteudo-quizz,.nivel-quizz,.posiciona-botao{
+        width: 80%;
+    } 
+    .caixa-respostas{
+        flex-wrap: wrap;
+    }
+    .acerto-nivel{
+        flex-direction: column;
+    }
+    .acerto-nivel li{
+        width: 100%;
+    }
 }
 
 
