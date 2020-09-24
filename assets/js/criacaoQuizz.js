@@ -20,3 +20,65 @@ function adicionaNivel(){
     tela.appendChild(novoNivel);
     novoNivel.querySelector("h3").innerText = "Nível " + contNivel;
 }
+
+function publicarQuizz(){
+    var titleInput = document.querySelector('.conteudo-quizz .titulo-quizz');
+    var title = titleInput.value;
+    var perguntas = buscaPerguntas();
+    console.log(perguntas);
+    var niveis = buscaNiveis();
+    console.log(niveis);
+}
+
+function buscaNiveis(){
+    var listaNiveis = document.querySelectorAll(".caixa-nivel");
+    var niveis = [];
+    for(var i = 0 ;i < listaNiveis.length;i++){
+        var minimoInput = listaNiveis[i].querySelector('.acerto-minimo');
+        var maximoInput = listaNiveis[i].querySelector('.acerto-maximo');
+        var tituloInput = listaNiveis[i].querySelector('.titulo-nivel');
+        var imagemInput = listaNiveis[i].querySelector('.imagem-nivel');
+        var descricaoInput = listaNiveis[i].querySelector('.descricao-nivel');
+
+        var minimo = minimoInput.value;
+        var maximo = maximoInput.value;
+        var titulo = tituloInput.value;
+        var imagem = imagemInput.value;
+        var descricao = descricaoInput.value;
+
+        nivel = {
+            'minimo': minimo,
+            'maximo': maximo,
+            'titulo': titulo,
+            'imagem': imagem,
+            'descricao': descricao
+        };
+        niveis.push(nivel);
+    }
+    return niveis;
+}
+
+function buscaPerguntas(){
+    var listaPerguntas = document.querySelectorAll(".pergunta-quizz");
+    var perguntas = [];
+    for(var i = 0 ;i < listaPerguntas.length;i++){
+        var respostas = [];
+        var tituloInput = listaPerguntas[i].querySelector('.pergunta');
+        var titulo = tituloInput.value;
+        var respostasInput = listaPerguntas[i].querySelectorAll('.resposta');
+        var respostasImgInput = listaPerguntas[i].querySelectorAll('.resposta-imagem');
+        for(var j = 0; j < respostasInput.length;j++){
+            var resposta = {
+                'texto': respostasInput[j].value,
+                'imagem': respostasImgInput[j].value
+            };
+            respostas.push(resposta);
+        }
+        var pergunta = {
+            'titulo': titulo,
+            'respostas': respostas
+        };
+        perguntas.push(pergunta);
+    }
+    return perguntas;
+}
