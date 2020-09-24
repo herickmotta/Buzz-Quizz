@@ -1,6 +1,7 @@
 function carregaCriacaoQuizz(){
-    document.querySelector('.tela-criacao-quizz').classList.toggle('esconde-tela');
-    document.querySelector('.tela-lista-quizz').classList.toggle('esconde-tela');
+    document.querySelector('.tela-login').classList.add('esconde-tela');
+	document.querySelector('.tela-criacao-quizz').classList.remove('esconde-tela');
+    document.querySelector('.tela-lista-quizz').classList.add('esconde-tela');
 }
 var contPergunta = 1;
 function adicionaPergunta(){
@@ -29,17 +30,30 @@ function publicarQuizz(){
     console.log(title);
 
     var perguntas = buscaPerguntas();
+    if (perguntas === false) return;
     var niveis = buscaNiveis();
     
-    var dados{
+    var header = {
+        'Content-type': 'application/json',
+        'User-Token': token
+    };
+
+    var dados = {
         'title': title,
         'perguntas': perguntas,
         'niveis': niveis
-
-    }
-
+    };
+    var requisicao = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes',dados,{header:header});
+    requisicao.then(sucessoAoEnviar).catch(erroAoEnviar);
 }
 
+function sucessoAoEnviar(sucesso){
+    console.log(sucesso);
+    carregaListaQuizz();
+}
+function erroAoEnviar(erro){
+    console.log(erro.response.data.message);
+}
 function buscaNiveis(){
     var listaNiveis = document.querySelectorAll(".caixa-nivel");
     var niveis = [];
@@ -77,7 +91,7 @@ function buscaPerguntas(){
         var titulo = primeiraLetra(tituloInput.value.trim());
         if(validaInterrogacao(titulo)){
             alert("Corrija os dados!");
-            return;
+            return false;
         }
         var respostasInput = listaPerguntas[i].querySelectorAll('.resposta');
         var respostasImgInput = listaPerguntas[i].querySelectorAll('.resposta-imagem');

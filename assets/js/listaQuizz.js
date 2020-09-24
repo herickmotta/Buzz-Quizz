@@ -1,34 +1,31 @@
 //MOCKANDO SERVIDOR
-var listaQuizzes = [{
-	"title": "Título do meu quizz",
-	"data": {
-		"perguntas": [{
-			"titulo": "Pergunta 1?",
-			"respostas": ["1", "2", "3", "4"]
-		}]
-	}
-},{
-	"title": "Título do meu quizz",
-	"data": {
-		"perguntas": [{
-			"titulo": "Pergunta 1?",
-			"respostas": ["1", "2", "3", "4"]
-		}]
-	}
-},{
-	"title": "Título do meu quizz",
-	"data": {
-		"perguntas": [{
-			"titulo": "Pergunta 1?",
-			"respostas": ["1", "2", "3", "4"]
-		}]
-	}
-}];
+var listaQuizzes = [];
 
 function carregaListaQuizz(){
+	buscaQuizzes();
     renderizaListaQuizzes();
-    document.querySelector('.tela-login').classList.toggle('esconde-tela');
-    document.querySelector('.tela-lista-quizz').classList.toggle('esconde-tela');
+	document.querySelector('.tela-login').classList.add('esconde-tela');
+	document.querySelector('.tela-criacao-quizz').classList.add('esconde-tela');
+    document.querySelector('.tela-lista-quizz').classList.remove('esconde-tela');
+}
+
+function buscaQuizzes(){
+	var headers = {
+		'User-Token': token,
+	};
+	var requisicao = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes',{headers});
+	requisicao.then(sucessoAoBuscar).catch(erroAoBuscar);	
+
+}
+
+function sucessoAoBuscar(dados){
+	console.log(dados);
+	listaQuizzes = dados.data;
+}
+
+function erroAoBuscar(erro){
+	console.log(erro.response.data.message);
+
 }
 
 function renderizaListaQuizzes(){

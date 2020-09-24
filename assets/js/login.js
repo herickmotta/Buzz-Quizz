@@ -26,14 +26,13 @@ function enviaRequisicao(email,senha){
 }
 
 function processarSucesso(sucesso){
-   console.log(sucesso);
    token = sucesso.data.token;
    carregaListaQuizz();
 }
 
 function processarErro(erro){
-    alert(erro.response.data.message);
     ativaLogin();
+    alert(erro);
 }
 
 function desativaLogin(){
