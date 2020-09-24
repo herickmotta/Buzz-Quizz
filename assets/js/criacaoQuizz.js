@@ -25,8 +25,7 @@ function adicionaNivel(){
 
 function publicarQuizz(){
     var titleInput = document.querySelector('.conteudo-quizz .titulo-quizz');
-    var title = titleInput.value;
-    title = primeiraLetra(title);
+    var title = primeiraLetra(titleInput.value.trim());
     console.log(title);
 
     var perguntas = buscaPerguntas();
@@ -44,11 +43,11 @@ function buscaNiveis(){
         var imagemInput = listaNiveis[i].querySelector('.imagem-nivel');
         var descricaoInput = listaNiveis[i].querySelector('.descricao-nivel');
 
-        var minimo = minimoInput.value;
-        var maximo = maximoInput.value;
-        var titulo = tituloInput.value;
-        var imagem = imagemInput.value;
-        var descricao = descricaoInput.value;
+        var minimo = minimoInput.value.trim();
+        var maximo = maximoInput.value.trim();
+        var titulo = tituloInput.value.trim();
+        var imagem = imagemInput.value.trim();
+        var descricao = descricaoInput.value.trim();
 
         nivel = {
             'minimo': minimo,
@@ -68,13 +67,13 @@ function buscaPerguntas(){
     for(var i = 0 ;i < listaPerguntas.length;i++){
         var respostas = [];
         var tituloInput = listaPerguntas[i].querySelector('.pergunta');
-        var titulo = primeiraLetra(tituloInput.value);
+        var titulo = primeiraLetra(tituloInput.value.trim());
         var respostasInput = listaPerguntas[i].querySelectorAll('.resposta');
         var respostasImgInput = listaPerguntas[i].querySelectorAll('.resposta-imagem');
         for(var j = 0; j < respostasInput.length;j++){
             var resposta = {
-                'texto': primeiraLetra(respostasInput[j].value),
-                'imagem': respostasImgInput[j].value
+                'texto': primeiraLetra(respostasInput[j].value.trim()),
+                'imagem': respostasImgInput[j].value.trim()
             };
             respostas.push(resposta);
         }
@@ -98,3 +97,4 @@ function primeiraLetra(string){
     string = string[0].toUpperCase() + string.slice(1);
     return string;
 }
+
