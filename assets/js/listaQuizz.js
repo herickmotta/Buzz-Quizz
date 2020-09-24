@@ -3,7 +3,6 @@ var listaQuizzes = [];
 
 function carregaListaQuizz(){
 	buscaQuizzes();
-    renderizaListaQuizzes();
 	document.querySelector('.tela-login').classList.add('esconde-tela');
 	document.querySelector('.tela-criacao-quizz').classList.add('esconde-tela');
     document.querySelector('.tela-lista-quizz').classList.remove('esconde-tela');
@@ -18,9 +17,10 @@ function buscaQuizzes(){
 
 }
 
-function sucessoAoBuscar(dados){
-	console.log(dados);
-	listaQuizzes = dados.data;
+function sucessoAoBuscar(objeto){
+	console.log(objeto);
+	listaQuizzes = objeto.data;
+	renderizaListaQuizzes();
 }
 
 function erroAoBuscar(erro){

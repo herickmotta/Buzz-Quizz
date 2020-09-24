@@ -33,17 +33,20 @@ function publicarQuizz(){
     if (perguntas === false) return;
     var niveis = buscaNiveis();
     
-    var header = {
+    var headers = {
         'Content-type': 'application/json',
         'User-Token': token
     };
-
-    var dados = {
+    var dataRaw = {
         'title': title,
-        'perguntas': perguntas,
-        'niveis': niveis
+        'data':{
+            'perguntas': perguntas,
+            'niveis': niveis
+        },
     };
-    var requisicao = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes',dados,{header:header});
+
+    console.log(dataRaw);
+    var requisicao = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes',dataRaw,{headers});
     requisicao.then(sucessoAoEnviar).catch(erroAoEnviar);
 }
 
