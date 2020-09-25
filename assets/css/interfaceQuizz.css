@@ -48,6 +48,7 @@ h4{
     position: relative;
     border-radius: 10px;
     flex-shrink: 1;
+    overflow: hidden;
 }
 .interface-respostas li div{
     position: absolute;
@@ -64,7 +65,9 @@ h4{
     font-weight: bold;
     font-size: 18px;
 }
-
+.correta{
+    background:green;
+}
 .interface-respostas li img{
     width: 100%;
     border-radius:5px;
@@ -72,6 +75,13 @@ h4{
 
 .esconde-tela{
     display: none;
+}
+
+.interface-respostas li div .errada{
+    background: red;
+}
+.interface-respostas li div .correta{
+    background: green;
 }
 
 @media(max-width: 600px){

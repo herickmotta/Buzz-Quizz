@@ -24,7 +24,7 @@ function sucessoAoBuscar(objeto){
 }
 
 function erroAoBuscar(erro){
-	console.log(erro.response.data.message);
+	console.log(erro);
 
 }
 
@@ -42,8 +42,10 @@ function renderizaListaQuizzes(){
             var quizz = "<article class = 'quizz'>";
             quizz += listaQuizzes[i].title;
             quizz += "</article>";
-            li.innerHTML = quizz;
-        }
+			li.innerHTML = quizz;
+			li.setAttribute('id',listaQuizzes[i].id);
+			li.setAttribute('onclick','carregaInterfaceQuizz(this)');
+		}
         ul.appendChild(li);
     }
 }
