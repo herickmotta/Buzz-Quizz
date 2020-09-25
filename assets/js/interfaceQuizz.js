@@ -12,6 +12,7 @@ function carregaInterfaceQuizz(quizz){
 }
 
 function iniciaQuizz(quizz){
+    resetaVariaveisGlobais();
     var id = quizz.getAttribute('id');
     for(var i= 0 ;listaQuizzes.length;i++){
         if(id == listaQuizzes[i].id){
@@ -19,7 +20,6 @@ function iniciaQuizz(quizz){
             break;
         }
     }
-    console.log(quizzAtual);
     atualizaPergunta();
 }
 function atualizaPergunta(){
@@ -57,7 +57,7 @@ function comparador() {
 function proximaPergunta(){
     perguntaAtual++;
     if(perguntaAtual === quizzAtual.data.perguntas.length){
-        console.log('acabou')
+        finalizaQuizz();
         return;
     }
     atualizaPergunta();
@@ -75,4 +75,42 @@ function escolheResposta(resposta){
     setTimeout(proximaPergunta,2000);
 }
 
+function resetaVariaveisGlobais(){
+    acertos = 0;
+    quizzAtual = null;
+    tituloQuizz = null;
+    tituloPergunta = null;
+    listaRespostas = null;
+    perguntaAtual = 0;
+}
 
+function finalizaQuizz(){
+    carregaTelaFinal();
+
+}
+var tituloNivel;
+var imagemNivel;
+var descricaoNivel;
+var score ;
+function carregaTelaFinal(){
+    score = Math.floor((acertos/perguntaAtual)*100);
+    for(var i = 0;i<quizzAtual.data.niveis.length;i++){
+        if(score >= quizzAtual.data.niveis[i].minimo && score <= quizzAtual.data.niveis[i].maximo){
+            tituloNivel = quizzAtual.data.niveis[i].titulo;
+            imagemNivel = quizzAtual.data.niveis[i].imagem;
+            descricaoNivel = quizzAtual.data.niveis[i].descricao;
+        }
+    }
+    renderizaNivel();
+    document.querySelector('.tela-interface-quizz').classList.add('esconde-tela');
+    document.querySelector('.tela-interface-final').classList.remove('esconde-tela');
+}
+
+function renderizaNivel(){
+    document.querySelector('.interface-title-final').innerText = tituloQuizz;
+    document.querySelector('.interface-pergunta-final').innerHTML = 'Você acertou '+acertos+' de '+perguntaAtual+' perguntas!<br> Score: '+score+'%';
+    
+    var descricao = '<h5>'+tituloNivel+'</h5><p>'+descricaoNivel+'</p>';
+    document.querySelector('.interface-quizz-final .descricao-nivel').innerHTML = descricao;
+    document.querySelector('.interface-quizz-final .imagem-nivel').innerHTML = "<img src="+ imagemNivel +">";
+}

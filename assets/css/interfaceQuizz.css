@@ -1,9 +1,9 @@
-.tela-interface-quizz{
+.tela-interface-quizz,.tela-interface-final{
     display:flex;
     justify-content: center;
     width: 100%;
 }
-.interface-quizz{
+.interface-quizz,.interface-quizz-final{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@ h4{
 
 }
 
-.interface-pergunta{
+.interface-pergunta,.interface-pergunta-final{
     font-family: 'Merriweather', serif;
     width: 100%;
     padding: 20px;
@@ -66,7 +66,7 @@ h4{
     font-size: 18px;
 }
 .correta{
-    background:green;
+    background: #FFF;
 }
 .interface-respostas li img{
     width: 100%;
@@ -82,6 +82,27 @@ h4{
 }
 .interface-respostas li div .correta{
     background: green;
+}
+
+.interface-quizz-final .interface-nivel{
+    display: flex;
+    width: 100%;
+}
+.interface-quizz-final .descricao-nivel{
+    width: 50%;
+    color:#848484;
+    font-family: 'Merriweather', serif;
+}
+h5{
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom:15px;
+}
+.interface-quizz-final .imagem-nivel{
+    width: 50%;
+}
+.interface-quizz-final .imagem-nivel img{
+    width: 100%;
 }
 
 @media(max-width: 600px){
