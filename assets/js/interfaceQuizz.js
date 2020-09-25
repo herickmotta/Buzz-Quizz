@@ -43,7 +43,7 @@ function renderizaPergunta(){
         resposta += '<div class = "nome-imagem">' + listaRespostas[i].texto +'</div>';
         li.innerHTML = resposta;
         if (listaRespostas[i].ehCorreta === 'true'){
-            li.classList.add('correta')
+            li.classList.add('certa')
         };
         li.setAttribute('onclick','escolheResposta(this)');
         containerPergunta.appendChild(li);
@@ -64,14 +64,14 @@ function proximaPergunta(){
 }
 
 function escolheResposta(resposta){
-    if(resposta.classList.contains('correta')){
+    if(resposta.classList.contains('certa')){
         acertos++;
     }
     var respostasErradas = document.querySelectorAll('.nome-imagem');
     for(var i=0;i<respostasErradas.length;i++){
         respostasErradas[i].style.background = '#FFBBBA';
     }
-    document.querySelector('.correta .nome-imagem').style.background = '#9CFFB8';
+    document.querySelector('.certa .nome-imagem').style.background = '#9CFFB8';
     setTimeout(proximaPergunta,2000);
 }
 
@@ -82,18 +82,21 @@ function resetaVariaveisGlobais(){
     tituloPergunta = null;
     listaRespostas = null;
     perguntaAtual = 0;
+    tituloNivel = null;
+    imagemNivel = null;
+    descricaoNivel = null;
+    score = null;
 }
 
 function finalizaQuizz(){
     carregaTelaFinal();
-
 }
 var tituloNivel;
 var imagemNivel;
 var descricaoNivel;
 var score ;
 function carregaTelaFinal(){
-    score = Math.floor((acertos/perguntaAtual)*100);
+    score = Math.ceil((acertos/perguntaAtual)*100);
     for(var i = 0;i<quizzAtual.data.niveis.length;i++){
         if(score >= quizzAtual.data.niveis[i].minimo && score <= quizzAtual.data.niveis[i].maximo){
             tituloNivel = quizzAtual.data.niveis[i].titulo;

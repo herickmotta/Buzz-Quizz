@@ -51,7 +51,6 @@ function publicarQuizz(){
 }
 
 function sucessoAoEnviar(sucesso){
-    console.log(sucesso);
     carregaListaQuizz();
 }
 function erroAoEnviar(erro){
